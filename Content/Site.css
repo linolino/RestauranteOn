@@ -45,9 +45,14 @@ aside ul {
 }
 
 .container-fluid {
-    /*background-color: #f8965d;*/
+    background-color: #f8965d;
     background-color: rgb(22, 134, 51);
     border-color: black;
-    font-size:15px;
-    
+    font-size: 15px;
+
+
+    /*background-color: #ff0000;
+    border-color: #74D6FF;
+    color: #ffffff;*/
 }
+
