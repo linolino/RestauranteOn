@@ -1,0 +1,33 @@
+﻿@model RestauranteOnline.Models.Bairro
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h2>Excluir</h2>
+
+<h3>Tem certeza de que deseja excluir?</h3>
+<fieldset>
+    <legend>Bairro</legend>
+
+    @*<div class="display-label">
+         @Html.DisplayNameFor(model => model.IDBairro)
+    </div>*@
+    @*<div class="display-field">
+        @Html.DisplayFor(model => model.IDBairro)
+    </div>*@
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+}

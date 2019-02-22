@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RestauranteOnline.Models.Usuario>
+
+@Html.ExibeImagensUsuario()
+
+
+<br /><br /><br />
+<h3 class="pull-left">@Html.ActionLink("Adicionar novo", "Inserir")</h3>
+    <table class="table table-hover pull-right">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Login</th>
+              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody >
+            @foreach (var item in Model)
+            {
+                <tr >
+                    <td>@item.Nome</td>
+                    <td>@item.Login</td="pull-left">
+                  
+                </tr>
+            }
+        </tbody>
+    </table>
+

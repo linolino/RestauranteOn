@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestauranteBDModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="RestauranteBDModelStoreContainer">
+    <EntitySet Name="Bairro" EntityType="RestauranteBDModel.Store.Bairro" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Genero" EntityType="RestauranteBDModel.Store.Genero" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Restaurante" EntityType="RestauranteBDModel.Store.Restaurante" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuario" EntityType="RestauranteBDModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="fk_bairro" Association="RestauranteBDModel.Store.fk_bairro">
+      <End Role="Bairro" EntitySet="Bairro" />
+      <End Role="Restaurante" EntitySet="Restaurante" />
+    </AssociationSet>
+    <AssociationSet Name="fk_genero" Association="RestauranteBDModel.Store.fk_genero">
+      <End Role="Genero" EntitySet="Genero" />
+      <End Role="Restaurante" EntitySet="Restaurante" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bairro">
+    <Key>
+      <PropertyRef Name="IDBairro" />
+    </Key>
+    <Property Name="IDBairro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Genero">
+    <Key>
+      <PropertyRef Name="IDGenero" />
+    </Key>
+    <Property Name="IDGenero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Restaurante">
+    <Key>
+      <PropertyRef Name="IDRestaurante" />
+    </Key>
+    <Property Name="IDRestaurante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDGenero" Type="int" Nullable="false" />
+    <Property Name="IDBairro" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Endereco" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Telefone" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="Site" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="DisqueEntrega" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Login" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Senha" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="fk_bairro">
+    <End Role="Bairro" Type="RestauranteBDModel.Store.Bairro" Multiplicity="1" />
+    <End Role="Restaurante" Type="RestauranteBDModel.Store.Restaurante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bairro">
+        <PropertyRef Name="IDBairro" />
+      </Principal>
+      <Dependent Role="Restaurante">
+        <PropertyRef Name="IDBairro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_genero">
+    <End Role="Genero" Type="RestauranteBDModel.Store.Genero" Multiplicity="1" />
+    <End Role="Restaurante" Type="RestauranteBDModel.Store.Restaurante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genero">
+        <PropertyRef Name="IDGenero" />
+      </Principal>
+      <Dependent Role="Restaurante">
+        <PropertyRef Name="IDGenero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RestauranteBDModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="Bairro">
+          <Key>
+            <PropertyRef Name="IDBairro" />
+          </Key>
+          <Property Name="IDBairro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.fk_bairro" FromRole="Bairro" ToRole="Restaurante" />
+        </EntityType>
+        <EntityType Name="Genero">
+          <Key>
+            <PropertyRef Name="IDGenero" />
+          </Key>
+          <Property Name="IDGenero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Restaurante" Relationship="Self.fk_genero" FromRole="Genero" ToRole="Restaurante" />
+        </EntityType>
+        <EntityType Name="Restaurante">
+          <Key>
+            <PropertyRef Name="IDRestaurante" />
+          </Key>
+          <Property Name="IDRestaurante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDGenero" Type="Int32" Nullable="false" />
+          <Property Name="IDBairro" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Endereco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Site" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisqueEntrega" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Bairro" Relationship="Self.fk_bairro" FromRole="Restaurante" ToRole="Bairro" />
+          <NavigationProperty Name="Genero" Relationship="Self.fk_genero" FromRole="Restaurante" ToRole="Genero" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_bairro">
+          <End Role="Bairro" Type="Self.Bairro" Multiplicity="1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bairro">
+              <PropertyRef Name="IDBairro" />
+            </Principal>
+            <Dependent Role="Restaurante">
+              <PropertyRef Name="IDBairro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_genero">
+          <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+          <End Role="Restaurante" Type="Self.Restaurante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Genero">
+              <PropertyRef Name="IDGenero" />
+            </Principal>
+            <Dependent Role="Restaurante">
+              <PropertyRef Name="IDGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestauranteBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bairro" EntityType="Self.Bairro" />
+          <EntitySet Name="Genero" EntityType="Self.Genero" />
+          <EntitySet Name="Restaurante" EntityType="Self.Restaurante" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="fk_bairro" Association="Self.fk_bairro">
+            <End Role="Bairro" EntitySet="Bairro" />
+            <End Role="Restaurante" EntitySet="Restaurante" />
+          </AssociationSet>
+          <AssociationSet Name="fk_genero" Association="Self.fk_genero">
+            <End Role="Genero" EntitySet="Genero" />
+            <End Role="Restaurante" EntitySet="Restaurante" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestauranteBDModelStoreContainer" CdmEntityContainer="RestauranteBDEntities">
+    <EntitySetMapping Name="Bairro">
+      <EntityTypeMapping TypeName="IsTypeOf(RestauranteBDModel.Bairro)">
+        <MappingFragment StoreEntitySet="Bairro">
+          <ScalarProperty Name="IDBairro" ColumnName="IDBairro" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genero">
+      <EntityTypeMapping TypeName="IsTypeOf(RestauranteBDModel.Genero)">
+        <MappingFragment StoreEntitySet="Genero">
+          <ScalarProperty Name="IDGenero" ColumnName="IDGenero" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Restaurante">
+      <EntityTypeMapping TypeName="IsTypeOf(RestauranteBDModel.Restaurante)">
+        <MappingFragment StoreEntitySet="Restaurante">
+          <ScalarProperty Name="IDRestaurante" ColumnName="IDRestaurante" />
+          <ScalarProperty Name="IDGenero" ColumnName="IDGenero" />
+          <ScalarProperty Name="IDBairro" ColumnName="IDBairro" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="DisqueEntrega" ColumnName="DisqueEntrega" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="IsTypeOf(RestauranteBDModel.Usuario)">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

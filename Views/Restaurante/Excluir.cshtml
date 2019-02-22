@@ -1,0 +1,75 @@
+﻿@model RestauranteOnline.Models.Restaurante
+
+@{
+    ViewBag.Title = "Excluir";
+}
+
+<h2>Excluir</h2>
+
+<h3>Tem certeza de que deseja excluir?</h3>
+<fieldset>
+    <legend>Restaurante</legend>
+
+    @*<div class="display-label">
+         @Html.DisplayNameFor(model => model.IDRestaurante)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDRestaurante)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDGenero)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDGenero)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IDBairro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IDBairro)
+    </div>*@
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nome)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Endereco)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Endereco)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Telefone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Site)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Site)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DisqueEntrega)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DisqueEntrega)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Voltar", "Index")
+    </p>
+}

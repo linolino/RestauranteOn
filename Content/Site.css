@@ -1,0 +1,53 @@
+﻿input {
+    margin: 0.5em;
+}
+
+    input[type=submit] {
+        background-color: rgb(66,139,202);
+        border: 0;
+        padding: .5em;
+        color: white;
+    }
+
+select {
+    margin: 0.5em 0.5em 0;
+    padding: .5em;
+}
+
+.field-validation-error {
+    padding: 0.5em;
+    width: 100%;
+    display: block;
+    color: red;
+}
+
+.input-validation-error {
+    background-color: #ffd6d6;
+}
+
+aside ul {
+    padding: 0;
+}
+
+    aside ul li {
+        list-style-type: none;
+        margin: .5em 1em;
+    }
+
+.left.carousel-control,
+.right.carousel-control {
+    background-image: none;
+   
+}
+.navbar-brand {
+    background: url('../Imagens/logo_redimensionado.png');
+    width: 215px; height:50px;
+}
+
+.container-fluid {
+    /*background-color: #f8965d;*/
+    background-color: rgb(22, 134, 51);
+    border-color: black;
+    font-size:15px;
+    
+}

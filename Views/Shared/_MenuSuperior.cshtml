@@ -1,0 +1,27 @@
+﻿<nav>
+    <div class="container-fluid navbar-fixed-top">
+        <ul class="nav nav-tabs">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Restaurantes", "Index", "Restaurante")</li>
+            <li>@Html.ActionLink("Gêneros", "Index", "Genero")</li>
+            <li>@Html.ActionLink("Bairros", "Index", "Bairro")</li>
+            <li>@Html.ActionLink("Usuários", "Index", "Usuario")</li>
+
+
+            @*@if (User.Identity.IsAuthenticated)
+            {
+                <li>@Html.ActionLink("Deslogar", "Logout", "Login")</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Autenticar", "Index", "Login")</li>}*@
+
+        </ul>
+        <div class="navbar-right">
+            <p style="margin:8px">
+                <a id="botao-sair" class="btn btn-success" style="display:none">Sair</a>
+            </p>
+
+        </div>
+    </div>
+</nav>

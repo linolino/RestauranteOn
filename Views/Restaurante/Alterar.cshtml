@@ -1,0 +1,95 @@
+﻿@model RestauranteOnline.Models.Restaurante
+
+@{
+    ViewBag.Title = "Alterar";
+}
+
+<h2>Alterar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Restaurante</legend>
+
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.IDRestaurante)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.IDRestaurante)
+                @Html.ValidationMessageFor(model => model.IDRestaurante)
+            </div>*@
+
+        @Html.HiddenFor(model => model.IDRestaurante)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDGenero,"Gênero do Restaurante")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Genero.Descricao)
+            @Html.ValidationMessageFor(model => model.IDGenero)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IDBairro,"Bairro")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Bairro.Nome)
+            @Html.ValidationMessageFor(model => model.IDBairro)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Endereco)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco)
+            @Html.ValidationMessageFor(model => model.Endereco)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Telefone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Telefone)
+            @Html.ValidationMessageFor(model => model.Telefone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Site)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Site)
+            @Html.ValidationMessageFor(model => model.Site)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DisqueEntrega)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisqueEntrega)
+            @Html.ValidationMessageFor(model => model.DisqueEntrega)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

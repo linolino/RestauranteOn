@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RestauranteOnline.Models.Genero>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Html.ExibeImagensGeneros()
+
+<br /><br /><br />
+<h3 class="pull-left">@Html.ActionLink("Novo Gênero", "Inserir")</h3>
+    <table class="table table-hover">
+        <tr>
+            <th>Descricao</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Descricao</td>
+                <td>
+                    @Html.ActionLink("Alterar", "Alterar", new { id = item.IDGenero }) |
+
+                    @Html.ActionLink("Excluir", "Excluir", new { id = item.IDGenero })
+                </td>
+            </tr>
+        }
+
+    </table>

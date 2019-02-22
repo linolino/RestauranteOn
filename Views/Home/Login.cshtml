@@ -1,0 +1,75 @@
+﻿@model RestauranteOnline.Models.UsuarioMetadado
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Restaurante Online - @ViewBag.Title</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            body {
+                /*padding-top: 60px;*/
+                padding-top: 100px;
+                /*background-image: url(/Imagens/fundo1.png);
+            background-attachment: fixed;
+            background-size: 50%;
+             background-repeat: no-repeat;
+            background-color: #000;*/
+                /*margin: 0;
+            padding: 0;*/
+                background-image: url(/Imagens/login_adm.png);
+                background-repeat: no-repeat;
+                background-attachment: scroll;
+                background-position-x: center;
+                background-size: 90%;
+                background-color: #000;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Restaurante Online - Área Adminstrativa </a>
+                    <a class="navbar-brand" href="http://localhost:1666/home">Home</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class=" alert alert-success">
+                <div class="container">
+                    <div>
+                        <form id="form-login" name=" form-login" method="get" action="javascript:function()">
+                            <p>
+                                <label for="txtLogin">Login</label>&nbsp;
+                                <input type="text" id="txtLogin" name="txtLogin" />
+                            </p>
+                            <p>
+                                <label for="txtSenha">Senha</label>&nbsp;
+                                <input type="password" id="txtSenha" name="txtSenha" />&nbsp;
+                            </p>
+                            <p>
+                                <a id="botao-entrar" class="btn btn-success">Entrar</a>
+
+                            </p>
+                        </form><br />
+                        <label id="status" class="alert alert-warning"></label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/Autenticacao.js"></script>
+    </body>
+</html>
+
+

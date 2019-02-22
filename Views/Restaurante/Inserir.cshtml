@@ -1,0 +1,60 @@
+﻿@model RestauranteOnline.Models.RestauranteMetadado
+<br /><br />
+<div>
+    <h2>Inserir</h2>
+</div>
+
+@using (Html.BeginForm("Inserir", "Restaurante", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    @Html.LabelFor(m => m.Nome, "Nome")
+    @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Nome)
+
+
+    @Html.LabelFor(model => model.Endereco)
+    @Html.TextBoxFor(model => model.Endereco, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Endereco)
+
+
+
+    @Html.LabelFor(model => model.Telefone)
+    @Html.TextBoxFor(model => model.Telefone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Telefone)
+
+    @Html.LabelFor(model => model.Site)
+    @Html.TextBoxFor(model => model.Site, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Site)
+
+
+    @Html.LabelFor(model => model.DisqueEntrega)
+    @Html.CheckBoxFor(model => model.DisqueEntrega, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.DisqueEntrega)
+
+    @Html.LabelFor(model => model.IDGenero)
+    @Html.DropDownList("IDGenero", new SelectList(ViewBag.Genero, "IDGenero", "Descricao"), new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.IDGenero)
+
+    @Html.LabelFor(model => model.IDBairro)
+    @Html.DropDownList("IDBairro", new SelectList(ViewBag.Bairro, "IDBairro", "Nome"), new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.IDBairro)
+    <br />
+    <p>
+        <input type="submit" value="Salvar" class="btn btn-success" /> |
+
+        @Html.ActionLink("Voltar", "Index", "Restaurante", new { @Class = "btn btn-danger" })
+
+    </p>
+
+
+
+}
+
+
+
+
+
+

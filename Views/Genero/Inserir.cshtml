@@ -1,0 +1,25 @@
+﻿@model RestauranteOnline.Models.Genero
+<br /><br /><br />
+
+<h2>Inserir</h2>
+
+@using (Html.BeginForm("Inserir", "Genero", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    @Html.LabelFor(m => m.Descricao, "Descrição")
+    @Html.TextBoxFor(model => model.Descricao, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Descricao)
+
+
+    <p>
+        <input type="submit" value="Salvar" class="btn btn-success" />
+
+        @Html.ActionLink("Voltar", "Index", "Restaurante", new { @Class = "btn btn-danger" })
+
+    </p>
+
+}

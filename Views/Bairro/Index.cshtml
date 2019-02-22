@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RestauranteOnline.Models.Bairro>
+
+@Html.ExibeImagensBairro()
+
+<br /><br /><br />
+<h3 class="pull-left"> @Html.ActionLink("Novo Bairro", "Inserir", "Bairro")</h3>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @item.Nome
+            </td>
+            <td>
+                @Html.ActionLink("Alterar", "Alterar", new { id = item.IDBairro })
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.IDBairro })
+            </td>
+        </tr>
+    }
+
+</table>
+

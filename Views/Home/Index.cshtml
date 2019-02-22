@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="col-md-3 text-center"></div>
+<div class="col-md-6 text-center">
+    <div id="my-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <img src="~/imagens/ComidaMineira.png" width="510" height="300" />
+                     
+                        <h3>Diversas especialidades</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="~/Imagens/Hamburger.png" width="510" height="300" />
+                    
+                        <h3>Lanches Hamburgueres</h3>
+                    </div>
+
+                </div>
+            </div>
+            <div class="item">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="~/imagens/Pizza.png" width="510" height="300" />
+                      
+                        <h3>Massas</h3>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        @* Controls*@
+        <a class="left carousel-control" href="#my-carousel" role="button" data-slide="prev">
+            <span class="" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#my-carousel" role="button" data-slide="next">
+            <span class="" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<div class="col-md-3 text-center"></div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <form class=" form-inline" align="center">
+            <h3>Encontre seu Restaurante aqui!</h3>
+            <div class="form-group">
+                @Html.Label("Bairro")
+                @Html.DropDownList("Bairro")
+            </div>
+            <div class="form-group">
+                @Html.Label("Genero")
+                @Html.DropDownList("Genero")
+            </div>
+            <button type="button" id="pesquisar" class="btn btn-success">Pesquisar</button>
+            <br /><br />
+        </form>
+        <div class="row" align="center">
+            <div id="resultados"></div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+
+@section Scripts {
+
+    <script>
+
+        $(function () {
+
+            //$("#menuHome").addClass("active");
+
+            $("#pesquisar").click(function () { //captura o clicque do botao "pesquisar"
+
+                //obtem os dados  dos dropdowlist bairro e genero selecionados e os atribui a uma variavel.
+                var pesquisa = { IDBairro: $("#Bairro").val(), IDGenero: $("#Genero").val() };
+
+                //Exibi os resulatados da pesquisa passando como parametro o controler, a action,
+                // a variavel contendo os dados  do bairro e do genero e  os resultados.
+
+                var $resultados = $('#resultados');
+
+                $.ajax({
+
+                    type: "post",
+                    url: "/Home/pesquisar",
+                    data: pesquisa,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data == 0) {
+                            $resultados.empty();//limpa pesquisa
+                            $('#resultados').append('<div class="alert alert-warning ">Não encontramos nenhum restaurante... </div>');
+                            return false;
+                        }
+                        else {
+                            $resultados.empty();//limpa pesquisa
+                            data.forEach(function (e) {
+                                if (e.DisqueEntrega == true)
+                                    e.DisqueEntrega = "Sim";
+                                else
+                                    e.DisqueEntrega = "Não";
+                                $('#resultados').append(
+                                    '<div class ="alert alert-success">' +
+                                    '<h4><b>' + e.Nome + '</b></h4>' +
+                                    '<p><b>Endereço: </b>' + e.Endereco + '</p>' +
+                                    '<p><b>Telefone: </b>' + e.Telefone + '</p>' +
+                                    '<p><b>Site: </b>' + e.Site + '</p>' +
+                                    '<p><b>Disque Entrega: </b>' + e.DisqueEntrega + '</p>' +
+                                    '<p><b>Imagem: </b>' + e.Imagem + '</p>' +
+                                    '</div>'
+                                );
+
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        alert("ATENÇÃO" + " Erro");
+                        console.log(data + "Erro");
+
+                    }
+                });
+            });
+        });
+    </script>
+}

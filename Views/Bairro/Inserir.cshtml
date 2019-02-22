@@ -1,0 +1,40 @@
+﻿@model RestauranteOnline.Models.Bairro
+
+@{
+    ViewBag.Title = "Inserir";
+}
+<br /><br />
+
+<h2>Novo Bairro</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+
+
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome, "Nome")
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+    <div>
+        <input type="submit" value="Salvar" class="btn btn-success" />
+        @Html.ActionLink("Voltar", "Index", "Bairro", new { @class = "btn btn-danger" })
+    </div>
+
+
+
+
+}
+
+
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

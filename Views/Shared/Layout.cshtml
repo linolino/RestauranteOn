@@ -1,0 +1,119 @@
+﻿
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Restaurante OnLine - @ViewBag.Title</title>
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Fundo.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @*<style> body {padding-top: 60px;}</style>*@
+</head>
+
+<body>
+    <div class="container-fluid navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li id="menuHome">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li id="menuHome">@Html.ActionLink("Restaurantes", "Index", "Restaurante")</li>
+                    <li id="menuHome">@Html.ActionLink("Gêneros", "Index", "Genero")</li>
+                    <li id="menuHome">@Html.ActionLink("Bairros", "Index", "Bairro")</li>
+                    <li id="menuHome">@Html.ActionLink("Usuários", "Index", "Usuario")</li>
+                </ul>
+
+                <div class="navbar-right">
+                    <p style="margin:8px">
+                        <a id="botao-sair" class="btn btn-success" style="display:none">Sair</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<aside class="pull-right">
+            <h1>Pesquise seu restaurente Aqui</h1>
+        </aside>*@
+    <div class="container">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Autenticacao.js"></script>
+    @RenderSection("Scripts", required: false)
+    <div class="container body-content">
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Restaurante Online</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+@*<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+</body>
+</html>*@
+
+
+@*<Doctype html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Restaurante OnLine - @ViewBag.Title</title>
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/Fundo.css" rel="stylesheet" />
+        <style>
+            body {
+                padding-top: 60px;
+            }
+        </style>
+        <link href="~/Content/Site.css" rel="stylesheet" />
+    </head>
+    <body>
+        @Html.Partial("_MenuSuperior")
+        <div class="container">
+            <div class="row-fluid">
+                <main class="col-sm-12">
+                    @RenderBody()
+                </main>               
+            </div>
+        </div>
+        @RenderSection("Scripts", false)
+    </body>
+</html>*@

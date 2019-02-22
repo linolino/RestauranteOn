@@ -1,0 +1,34 @@
+﻿@model RestauranteOnline.Models.Usuario
+    <br /><br /><br />
+
+<h2>Novo Usuário</h2>
+
+@using (Html.BeginForm("Inserir", "Usuario", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    @Html.LabelFor(m => m.Nome,"Nome")
+    @Html.TextBoxFor(m=> m.Nome,new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Nome)
+    
+    @Html.LabelFor(m=> m.Login,"Login")
+    @Html.TextBoxFor(m => m.Login,new {@class="form-control" })
+    @Html.ValidationMessageFor(m => m.Login)
+    
+    @Html.LabelFor(m => m.Senha,"Senha")
+    @Html.PasswordFor(m => m.Senha,new {@class="form-control" })
+    @Html.ValidationMessageFor(m => m.Senha)
+    
+    <div class="top">
+        <input type="submit" value="Salvar"class="btn btn-success"  />
+        @Html.ActionLink("Voltar", "Index","Usuario",new {@class="btn btn-danger" })
+    </div>
+
+
+}
+
+
+
+
+
