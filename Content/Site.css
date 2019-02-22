@@ -40,19 +40,40 @@ aside ul {
    
 }
 .navbar-brand {
-    background: url('../Imagens/logo_redimensionado.png');
-    width: 215px; height:50px;
+    background: url('../Imagens/logo_bom.png');
+      background-repeat: no-repeat;
+    width: 200px; height:55px;
 }
 
-.container-fluid {
-    background-color: #f8965d;
-    background-color: rgb(22, 134, 51);
-    border-color: black;
-    font-size: 15px;
-
-
-    /*background-color: #ff0000;
-    border-color: #74D6FF;
-    color: #ffffff;*/
+.navbar-dark {
+    background-color: #135b28;
+    border-color: #135b28;
+     color: white;
 }
+.navbar-link {
+    font-size: 18px;
+    color: #ffd6d6;
+}
+.panel-body {
+   
+    background-color: #135b28;
+    /*border-color: #135b28;*/
+    color: #69b27f;
+   }
+
+body {
+    /*padding-top: 355px;*/
+    background: url('../Imagens/fundo_r.png') no-repeat center center fixed;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: 95%;
+    background-color: #135b28;
+}
+
+
+
+
+
+
+
 

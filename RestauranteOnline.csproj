@@ -187,7 +187,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Fundo.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -206,12 +205,14 @@
     <Content Include="Imagens\fundo2.jpg" />
     <Content Include="Imagens\fundo2.png" />
     <Content Include="Imagens\fundo3.jpg" />
+    <Content Include="Imagens\fundo_r.png" />
     <Content Include="Imagens\genero.png" />
     <Content Include="Imagens\Hamburger.png" />
     <Content Include="Imagens\login.jpg" />
     <Content Include="Imagens\login_adm.png" />
     <Content Include="Imagens\logo.png" />
     <Content Include="Imagens\logo_1.png" />
+    <Content Include="Imagens\logo_bom.png" />
     <Content Include="Imagens\logo_redimensionado.png" />
     <Content Include="Imagens\Pizza.png" />
     <EntityDeploy Include="Models\ModeloDados.edmx">
